@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-from api.views import HealthView, AuthTestView, ReportListView
+from api.views import HealthView, AuthTestView, ReportListView, CreateReportView
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path("api/health/", HealthView.as_view()),
     path("api/test/auth/", AuthTestView.as_view()),
     path("api/reports/", ReportListView.as_view()),
+    path("api/reports/create/", CreateReportView.as_view()),
 ]

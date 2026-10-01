@@ -40,3 +40,23 @@ class ReportListView(APIView):
         serializer = ReportSerializer(reports, many=True)
 
         return Response(serializer.data)
+
+class CreateReportView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = ReportSerializer(data=request.data)
+
+        if serializer.is_valid():
+            report = serializer.save()
+
+            return Response(
+                ReportSerializer(report).data,
+                status=201
+            )
+
+        return Response(
+            serializer.errors,
+            status=400
+        )
