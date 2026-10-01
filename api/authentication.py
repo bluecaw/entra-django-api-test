@@ -41,7 +41,16 @@ class EntraIDAuthentication(authentication.BaseAuthentication):
             jwks_client = jwt.PyJWKClient(jwks_url)
 
             signing_key = jwks_client.get_signing_key_from_jwt(token)
+            unverified_payload = jwt.decode(
+                token,
+                options={"verify_signature": False}
+            )
 
+            print("TOKEN VER:", unverified_payload.get("ver"))
+            print("TOKEN ISS:", unverified_payload.get("iss"))
+            print("TOKEN AUD:", unverified_payload.get("aud"))
+            print("TOKEN TID:", unverified_payload.get("tid"))
+            print("TOKEN SCP:", unverified_payload.get("scp"))
             payload = jwt.decode(
                 token,
                 signing_key.key,
