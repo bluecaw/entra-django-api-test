@@ -1,7 +1,6 @@
 import msal
 import requests
 
-
 TENANT_ID = "5ee5b59e-8d9b-46c0-b6fd-69a030e105ca"
 CLIENT_ID = "b16b5856-bc03-4b99-9c3c-fb8eed652b90"
 API_CLIENT_ID = "ba967ba9-6ec7-4784-ae9b-d7c9ff3ce05d"
