@@ -60,3 +60,27 @@ class CreateReportView(APIView):
             serializer.errors,
             status=400
         )
+
+class DeleteReportView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, pk):
+        try:
+            report = Report.objects.get(pk=pk)
+        except Report.DoesNotExist:
+            return Response(
+                {"error": "Report not found"},
+                status=404
+            )
+
+        report.delete()
+
+        return Response(
+            {
+                "status": "ok",
+                "message": "Report deleted",
+                "id": pk
+            },
+            status=200
+        )
