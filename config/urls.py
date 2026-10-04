@@ -11,6 +11,6 @@ urlpatterns = [
     path("api/reports/", ReportListView.as_view()),
     path("api/reports/create/", CreateReportView.as_view()),
     path("api/reports/<int:pk>/",DeleteReportView.as_view()),
-    path("api/reports/<int:pk>/",UpdateReportView.as_view()
+    path("api/reports/<int:pk>/update/",UpdateReportView.as_view()
 ),
 ]
